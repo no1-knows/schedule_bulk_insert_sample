@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @schedule_user %>
+
+<div>
+  <%= link_to "Edit this schedule user", edit_schedule_user_path(@schedule_user) %> |
+  <%= link_to "Back to schedule users", schedule_users_path %>
+
+  <%= button_to "Destroy this schedule user", @schedule_user, method: :delete %>
+</div>

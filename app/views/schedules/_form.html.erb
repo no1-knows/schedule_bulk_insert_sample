@@ -1,0 +1,57 @@
+<%= form_with(model: schedule) do |form| %>
+  <% if schedule.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+        <% schedule.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <% if schedule.schedule_users.any? %>
+      <% schedule.schedule_users.size.times do |num| %>
+        <div style="color: red">
+          <ul>
+            <% schedule.schedule_users[num].errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
+
+  <%= form.datetime_select :start_datetime %><br><br>
+  <%= form.datetime_select :end_datetime %><br><br>
+  <%= form.collection_check_boxes :user_ids, User.all, :id, :name %><br><br>
+
+  <%= form.submit %>
+
+<% end %>
+
+<style>
+    form {
+        width: 500px;
+        margin: 30px auto;
+    }
+
+    .flex, .rails-bootstrap-forms-datetime-select {
+        display: flex;
+    }
+
+    /*.flex > div {*/
+    /*    margin-right: 20px;*/
+    /*}*/
+
+    .form-label {
+        display: none;
+    }
+
+    .form-check-label > form-label {
+        display: block;
+    }
+</style>

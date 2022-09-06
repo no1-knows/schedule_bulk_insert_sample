@@ -1,0 +1,12 @@
+<div id="<%= dom_id schedule %>">
+  <div style="display: flex">
+    <div><%= schedule.start_datetime.strftime('%m/%d %H:%M') %></div>
+    <div>〜</div>
+    <div><%= schedule.end_datetime.strftime('%H:%M') %></div>
+
+    <% schedule.schedule_users.each do |u| %>
+      <div style="margin-left: 10px"><%= User.find(u.user_id).name %></div>
+    <% end %>
+    <div style="margin-left: 40px"><%= link_to "編集", edit_schedule_path(schedule) %></div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Schedule users</h1>
+
+<div id="schedule_users">
+  <% @schedule_users.each do |schedule_user| %>
+    <%= render schedule_user %>
+    <p>
+      <%= link_to "Show this schedule user", schedule_user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New schedule user", new_schedule_user_path %>
